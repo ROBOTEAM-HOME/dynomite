@@ -89,6 +89,27 @@ For example, the configuration file in [conf/dynomite.yml](conf/dynomite.yml)
 Finally, to make writing syntactically correct configuration files easier, dynomite provides a command-line argument -t or --test-conf that can be used to test the YAML configuration file for any syntax error.
 
 
+### Configuration YAML Generator
+
+The utility [generate_yams.py](https://github.com/Netflix/dynomite/blob/dev/scripts/dynomite/generate_yamls.py) automates
+.yaml configuration files creation, needed for every node.
+
+The following usage examples show how to create different cluster configuration
+with the command line.
+
+**Usage example 1**: 
+- 2 Datacenters, 
+- Each having 1 Rack 
+    - One node per Rack
+
+Redis server will be running on non default port 9999, and the client port will be
+the original redis port 6379
+
+
+```
+python generate_yamls.py 1.1.1.2:usa_rack1:usa 1.1.1.2:rack2 ccc:333  -dc usa --redis
+``` 
+
 ## License
 
 Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
